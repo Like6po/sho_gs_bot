@@ -55,8 +55,8 @@ async def voice(message: types.Message):
 
     code_name = f"{message.from_user.id}_{message.message_id}"
 
-    pathes = win_pathes(code_name)
-    #pathes = linux_pathes(code_name)
+    #pathes = win_pathes(code_name)
+    pathes = linux_pathes(code_name)
 
     await message.voice.download(pathes['path_1'])
 
