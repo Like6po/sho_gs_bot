@@ -55,8 +55,8 @@ async def voice(message: types.Message):
 
     code_name = f"{message.from_user.id}_{message.message_id}"
 
-    pathes = win_pathes(code_name)
-    # pathes = linux_pathes(code_name)
+    #pathes = win_pathes(code_name)
+    pathes = linux_pathes(code_name)
 
     await message.voice.download(pathes['path_1'])
 
@@ -74,7 +74,7 @@ async def voice(message: types.Message):
         return await msg.edit_text(f'{hbold("Не удалось распознать! (#2)")}')
 
     dir_list = os.listdir(pathes['path_dir'])
-    #dir_list.reverse()
+    dir_list.reverse()
 
     texts = [(await wit_speech(open(f"{pathes['path_dir']}{file_name}", 'rb'))) for file_name in dir_list]
     texts = [voice_text['text'] if 'text' in voice_text else '' for voice_text in texts]
